@@ -12,7 +12,11 @@
 // https://github.com/ocornut/imgui
 
 #pragma once
-#include "imgui.h"      // IMGUI_IMPL_API
+#ifdef NO_MODULE
+#include "imgui.h"
+#else
+import "imgui.h";      // IMGUI_IMPL_API
+#endif
 
 enum DXGI_FORMAT;
 struct ID3D12Device;

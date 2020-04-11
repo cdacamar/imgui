@@ -1,0 +1,15 @@
+/I.
+/I..
+/I..\..
+/nologo
+/Zi
+/MD
+/D UNICODE
+/D _UNICODE
+/c
+/experimental:module
+/std:c++latest
+/module:output .
+/Fo.\headers\
+
+..\..\imgui.ixx

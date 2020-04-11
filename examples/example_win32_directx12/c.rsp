@@ -1,0 +1,18 @@
+/I..
+/I..\..
+/nologo
+/Zi
+/MD
+/D UNICODE
+/D _UNICODE
+/c
+/experimental:module
+/std:c++latest
+/MP4
+/headerUnit dx12_bridge.h=dx12_bridge.h.ifc
+/headerUnit ..\..\imgui.h=imgui.h.ifc
+/headerUnit ..\imgui_impl_win32.h=imgui_impl_win32.h.ifc
+/headerUnit ..\imgui_impl_dx12.h=imgui_impl_dx12.h.ifc
+/wd4005
+
+main.cpp

@@ -1,0 +1,134 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build headers",
+        "type": "shell",
+        "options": {
+          "env": {
+            "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.2\\lib\\um\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\um\\x64;"
+          }
+        },
+        "args": [
+          "@${workspaceFolder}\\headers.rsp",
+          "${workspaceFolder}\\.\\dx12_bridge.h",
+          "${workspaceFolder}\\..\\..\\imgui.h",
+          "${workspaceFolder}\\..\\imgui_impl_win32.h",
+          "${workspaceFolder}\\..\\imgui_impl_dx12.h"
+        ],
+        "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x64\\cl.exe",
+        "problemMatcher": [
+          "$msCompile"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "build lib",
+        "type": "shell",
+        "options": {
+          "env": {
+            "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.2\\lib\\um\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\um\\x64;"
+          }
+        },
+        "args": [
+          "@${workspaceFolder}\\lib.rsp",
+          "${workspaceFolder}\\..\\..\\imgui.cpp",
+          "${workspaceFolder}\\..\\..\\imgui_demo.cpp",
+          "${workspaceFolder}\\..\\..\\imgui_draw.cpp",
+          "${workspaceFolder}\\..\\..\\imgui_widgets.cpp"
+        ],
+        "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x64\\cl.exe",
+        "problemMatcher": [
+          "$msCompile"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "build",
+        "type": "shell",
+        "options": {
+          "env": {
+            "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.2\\lib\\um\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\um\\x64;"
+          }
+        },
+        "args": [
+          "@${workspaceFolder}\\cl.rsp",
+          "${workspaceFolder}\\main.cpp",
+          "${workspaceFolder}\\..\\imgui_impl_dx12.cpp",
+          "${workspaceFolder}\\..\\imgui_impl_win32.cpp",
+          "${workspaceFolder}\\imgui.obj",
+          "${workspaceFolder}\\imgui_demo.obj",
+          "${workspaceFolder}\\imgui_draw.obj",
+          "${workspaceFolder}\\imgui_widgets.obj",
+          "${workspaceFolder}\\headers\\imgui.obj",
+          "${workspaceFolder}\\headers\\imgui_impl_win32.obj",
+          "${workspaceFolder}\\headers\\imgui_impl_dx12.obj",
+          "${workspaceFolder}\\headers\\dx12_bridge.obj",
+          "/link d3d12.lib d3dcompiler.lib dxgi.lib dxguid.lib onecore.lib"
+        ],
+        "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x64\\cl.exe",
+        "problemMatcher": [
+          "$msCompile"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "compile only main (modules)",
+        "type": "shell",
+        "options": {
+          "env": {
+            "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.2\\lib\\um\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\um\\x64;"
+          }
+        },
+        "args": [
+          "@${workspaceFolder}\\cl.rsp",
+          "/Bt",
+          "/c",
+          "${workspaceFolder}\\main.cpp"
+        ],
+        "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x64\\cl.exe",
+        "problemMatcher": [
+          "$msCompile"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "compile only main (no modules)",
+        "type": "shell",
+        "options": {
+          "env": {
+            "LIB": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\ATLMFC\\lib\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.6.2\\lib\\um\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.17763.0\\um\\x64;"
+          }
+        },
+        "args": [
+          "@${workspaceFolder}\\cl.rsp",
+          "/Bt",
+          "/c",
+          "/DNO_MODULE"
+          "${workspaceFolder}\\main.cpp"
+        ],
+        "command": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.26.28801\\bin\\Hostx86\\x64\\cl.exe",
+        "problemMatcher": [
+          "$msCompile"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+}

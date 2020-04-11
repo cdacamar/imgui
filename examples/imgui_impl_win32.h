@@ -8,7 +8,11 @@
 //  [X] Platform: Gamepad support. Enabled with 'io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad'.
 
 #pragma once
-#include "imgui.h"      // IMGUI_IMPL_API
+#ifdef NO_MODULE
+#include "imgui.h"
+#else
+import "imgui.h";      // IMGUI_IMPL_API
+#endif
 
 IMGUI_IMPL_API bool     ImGui_ImplWin32_Init(void* hwnd);
 IMGUI_IMPL_API void     ImGui_ImplWin32_Shutdown();

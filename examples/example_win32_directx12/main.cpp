@@ -2,18 +2,16 @@
 // If you are new to dear imgui, see examples/README.txt and documentation at the top of imgui.cpp.
 // FIXME: 64-bit only for now! (Because sizeof(ImTextureId) == sizeof(void*))
 
-#include "imgui.h"
-#include "imgui_impl_win32.h"
+#ifdef NO_MODULE
+#include "dx12_bridge.h"
 #include "imgui_impl_dx12.h"
-#include <d3d12.h>
-#include <dxgi1_4.h>
-#include <tchar.h>
-
-//#define DX12_ENABLE_DEBUG_LAYER
-
-#ifdef DX12_ENABLE_DEBUG_LAYER
-#include <dxgidebug.h>
-#pragma comment(lib, "dxguid.lib")
+#include "imgui_impl_win32.h"
+#include "imgui.h"
+#else
+import "dx12_bridge.h";
+import "imgui_impl_dx12.h";
+import "imgui_impl_win32.h";
+import "imgui.h";
 #endif
 
 struct FrameContext

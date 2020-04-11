@@ -1,0 +1,13 @@
+main.obj
+imgui_impl_dx12.obj
+imgui_impl_win32.obj
+imgui.obj
+imgui_demo.obj
+imgui_draw.obj
+imgui_widgets.obj
+headers\imgui.obj
+headers\imgui_impl_win32.obj
+headers\imgui_impl_dx12.obj
+headers\dx12_bridge.obj
+
+d3d12.lib d3dcompiler.lib dxgi.lib dxguid.lib onecore.lib
