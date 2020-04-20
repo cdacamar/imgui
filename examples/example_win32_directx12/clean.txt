@@ -1,0 +1,1 @@
+find . -name '*.obj' -or -name '*.exe' -or -name '*.ifc' | xargs rm
